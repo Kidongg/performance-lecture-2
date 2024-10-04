@@ -9,7 +9,7 @@ const SurveyChart = () => {
     const [filter, setFilter] = useState({})
 
     useEffect(() => {
-        Promise.all([
+        Promise.all([ 
             fetch('http://localhost:3001/answer').then((res) => res.json()),
             fetch('http://localhost:3001/survey').then((res) => res.json())
         ])

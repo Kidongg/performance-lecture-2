@@ -7,7 +7,7 @@ const SurveyItem = (props) => {
     return (
         <div className="SurveyItem">
             <Question>Q{props.survey.no + 1}. {props.survey.question}</Question>
-            <div>
+            <div>  
                 {props.survey.items.map((item, index) => {
                     let percent = props.data.hasOwnProperty(index) ? (props.data[index] / total * 100).toFixed(1) : 0
                     return (
