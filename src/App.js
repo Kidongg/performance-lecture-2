@@ -1,4 +1,4 @@
-import React, { lazy, Suspense, useState } from 'react'
+import React, { lazy, Suspense, useEffect, useState } from 'react'
 import styled from 'styled-components'
 import Header from './components/Header'
 import InfoTable from './components/InfoTable'
@@ -6,16 +6,29 @@ import SurveyChart from './components/SurveyChart'
 import Footer from './components/Footer'
 // import ImageModal from './components/ImageModal'
 
+//! 모달 컴포넌트 지연 로딩
 const LazyImageModal = lazy(() => import('./components/ImageModal'))
 
 function App() {
     const [showModal, setShowModal] = useState(false)
 
+    //! 모달 컴포넌트 사전 로딩 - 마우스 올려놨을때
+    // const handleMouseEnter = () => {
+    //     const component = import('./components/ImageModal')
+    // }
+
+    //! 모달 컴포넌트 사전 로딩 - 컴포넌트 마운트하고 나서
+    // useEffect(() => {
+    //     const component = import('./components/ImageModal')
+    // }, [])
+
     return (
         <div className="App">
             <Header />
             <InfoTable />
-            <ButtonModal onClick={() => { setShowModal(true) }}>올림픽 사진 보기</ButtonModal>
+            <ButtonModal onClick={() => { setShowModal(true) }} 
+            // onMouseEnter={handleMouseEnter}
+            >올림픽 사진 보기</ButtonModal>
             <SurveyChart />
             <Footer />
             <Suspense fallback={null}>
