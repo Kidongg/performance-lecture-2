@@ -13,33 +13,32 @@ function App() {
     const [showModal, setShowModal] = useState(false)
 
     //! 모달 컴포넌트 사전 로딩 - 마우스 올려놨을때
-    // const handleMouseEnter = () => {
-    //     const component = import('./components/ImageModal')
-    // }
+    const handleMouseEnter = () => {
+        const component = import('./components/ImageModal')
+    }
 
     //! 모달 컴포넌트 사전 로딩 - 컴포넌트 마운트 이후
-    // useEffect(() => {
-    //     const component = import('./components/ImageModal')
-    // }, [])
+    useEffect(() => {
+        const component = import('./components/ImageModal')
+    }, [])
 
     //! 모달 이미지 사전 로딩 - 컴포넌트 마운트 이후
-    // useEffect(() => {
-    //     const img = new Image()
-    //     img.src="https://stillmed.olympic.org/media/Photos/2016/08/20/part-1/20-08-2016-Football-Men-01.jpg?interpolation=lanczos-none&resize=*:800"
-    // }, [])
+    useEffect(() => {
+        const img = new Image()
+        img.src="https://stillmed.olympic.org/media/Photos/2016/08/20/part-1/20-08-2016-Football-Men-01.jpg?interpolation=lanczos-none&resize=*:800"
+    }, [])
 
     return (
         <div className="App">
             <Header />
             <InfoTable />
-            <ButtonModal onClick={() => { setShowModal(true) }} 
-            // onMouseEnter={handleMouseEnter}
-            >올림픽 사진 보기</ButtonModal>
+            <ButtonModal onClick={() => { setShowModal(true) }} onMouseEnter={handleMouseEnter}>올림픽 사진 보기</ButtonModal>
             <SurveyChart />
             <Footer />
             <Suspense fallback={null}>
                 {showModal ? <LazyImageModal closeModal={() => { setShowModal(false) }} /> : null}
             </Suspense>
+            {/* {showModal ? <ImageModal closeModal={() => { setShowModal(false) }} /> : null} */}
         </div>
     )
 }
